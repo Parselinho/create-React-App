@@ -47,13 +47,7 @@ function App() {
       setLoading(false);
       setError('An error occurred while fetching data from Flickr API');
     });
-  
-    // Update URL with searchTerm
-    if (searchTerm !== 'sunsets') {
-      window.history.pushState({}, '', `/search/${searchTerm}`);
-    } else {
-      window.history.pushState({}, '', '/');
-    }
+
   }, [searchTerm]);
 
   return (
