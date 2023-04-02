@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
   return (
+    // Render a navigation bar with links to other pages
     <nav className='main-nav'>
       <ul>
         <li>
