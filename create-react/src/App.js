@@ -13,6 +13,13 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('sunsets');
+  
+  // Listen to URL changes and update searchTerm
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const searchTermFromPath = pathname.replace('/search/', '');
+    setSearchTerm(searchTermFromPath || 'sunsets');
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -39,6 +46,13 @@ function App() {
       setLoading(false);
       setError('An error occurred while fetching data from Flickr API');
     });
+
+    // Update URL with searchTerm
+    if (searchTerm !== 'sunsets') {
+      window.history.pushState({}, '', `/search/${searchTerm}`);
+    } else {
+      window.history.pushState({}, '', '/');
+    }
   }, [searchTerm]);
 
   return (
