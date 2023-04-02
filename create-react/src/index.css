@@ -111,6 +111,48 @@ input:focus {
   width: 100%;
 }
 
+
+
+.not-found {
+  margin: 100px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.not-found-heading {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.not-found-text {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.not-found-link {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.not-found-link:hover {
+  background-color: #0062cc;
+}
+
+.not-found-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 45px;
+}
+
 @media only screen and (max-width: 767px)  {
   body {
     padding-top: 2em;
