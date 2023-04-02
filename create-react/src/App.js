@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     setLoading(true);
     setError(null);
-
+  
     axios.get('https://api.flickr.com/services/rest/', {
       params: {
         method: 'flickr.photos.search',
@@ -37,16 +37,17 @@ function App() {
     })
     .then(response => {
       setLoading(false);
-      setPhotos(prevPhotos => ({
-        ...prevPhotos,
-        [searchTerm]: response.data.photos.photo,
-      }));
+      setPhotos(prevPhotos => {
+        const newPhotos = { ...prevPhotos };
+        newPhotos[searchTerm] = response.data.photos.photo;
+        return newPhotos;
+      });
     })
     .catch(error => {
       setLoading(false);
       setError('An error occurred while fetching data from Flickr API');
     });
-
+  
     // Update URL with searchTerm
     if (searchTerm !== 'sunsets') {
       window.history.pushState({}, '', `/search/${searchTerm}`);
