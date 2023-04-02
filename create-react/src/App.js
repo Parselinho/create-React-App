@@ -28,6 +28,7 @@ function App() {
     setLoading(true);
     setError(null);
   
+    // Make an API request to Flickr with the searchTerm as a parameter
     axios.get('https://api.flickr.com/services/rest/', {
       params: {
         method: 'flickr.photos.search',
@@ -42,6 +43,7 @@ function App() {
       setLoading(false);
       // Store photos in state variable
       setPhotos(prevPhotos => {
+        // Set the photos state variable to a new object containing the previous photos and the new photos for the current searchTerm
         const newPhotos = { ...prevPhotos };
         newPhotos[searchTerm] = response.data.photos.photo;
         return newPhotos;
@@ -58,15 +60,24 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container">
+        {/* Render the SearchForm component */}
         <SearchForm onSubmit={setSearchTerm} />
+        {/* Render the Nav component */}
         <Nav />
         <Routes>
+          {/* Render the Gallery component for the home page with a default search term of "sunsets" */}
           <Route path="/" element={<Gallery searchTerm="sunsets" photos={photos["sunsets"] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
+          {/* Render the Gallery component for search results */}
           <Route path="/search" element={<Gallery photos={photos[searchTerm] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
+          {/* Render the Gallery component for a specific search term */}
           <Route path="/search/:searchTerm" element={<Gallery photos={photos[searchTerm] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
+          {/* Render the Gallery component for the "cats" search term */}
           <Route path="/cats" element={<Gallery searchTerm="cats" photos={photos["cats"] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
+          {/* Render the Gallery component for the "dogs" search term */}
           <Route path="/dogs" element={<Gallery searchTerm="dogs" photos={photos["dogs"] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
+          {/* Render the Gallery component for the "computers" search term */}
           <Route path="/computers" element={<Gallery searchTerm="computers" photos={photos["computers"] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
+          {/* Render the NotFound component if no matching route is found */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
