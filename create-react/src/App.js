@@ -18,7 +18,7 @@ function App() {
   // Listen to URL changes and update searchTerm
   useEffect(() => {
     const pathname = window.location.pathname;
-    const searchTermFromPath = pathname.replace('/search/', '');
+    const searchTermFromPath = pathname.replace(pathname.includes('search') ? '/search/' : '/', '');
     // Set searchTerm state to the search term in the URL, or 'sunsets' if none is present
     setSearchTerm(searchTermFromPath || 'sunsets');
   }, []);
