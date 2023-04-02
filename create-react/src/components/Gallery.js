@@ -11,6 +11,7 @@ function Gallery({ searchTerm, photos, loading, error, onSearchTermChange }) {
 
   // Render the gallery component with photos and/or error message
   return (
+    // Render a loading message if the photos are still being fetched from the API, Otherwise render the photo component with the fetched photos
     <>
       {loading ? (
         <div className="photo-container">
