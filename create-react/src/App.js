@@ -41,7 +41,7 @@ function App() {
         const newPhotos = { ...prevPhotos };
         newPhotos[searchTerm] = response.data.photos.photo;
         return newPhotos;
-      });
+    });
     })
     .catch(error => {
       setLoading(false);
