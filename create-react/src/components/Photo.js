@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Photo({ photos, error }) {
+  // If there's an error, show error message
   if (error) {
     return (
       <div className='photo-container'>
