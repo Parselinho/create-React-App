@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 function NotFound() {
+  // Get current location
   const location = useLocation();
 
   return (
