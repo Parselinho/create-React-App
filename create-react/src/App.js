@@ -9,6 +9,7 @@ import Gallery from './components/Gallery';
 import NotFound from './components/NotFound';
 
 function App() {
+  // State variables
   const [photos, setPhotos] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,9 +19,11 @@ function App() {
   useEffect(() => {
     const pathname = window.location.pathname;
     const searchTermFromPath = pathname.replace('/search/', '');
+    // Set searchTerm state to the search term in the URL, or 'sunsets' if none is present
     setSearchTerm(searchTermFromPath || 'sunsets');
   }, []);
 
+  // Fetch photos from Flickr API when searchTerm changes
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -37,6 +40,7 @@ function App() {
     })
     .then(response => {
       setLoading(false);
+      // Store photos in state variable
       setPhotos(prevPhotos => {
         const newPhotos = { ...prevPhotos };
         newPhotos[searchTerm] = response.data.photos.photo;
@@ -50,6 +54,7 @@ function App() {
 
   }, [searchTerm]);
 
+  // Render components with React Router
   return (
     <BrowserRouter>
       <div className="container">
