@@ -68,7 +68,7 @@ function App() {
           {/* Render the Gallery component for the home page with a default search term of "sunsets" */}
           <Route path="/" element={<Gallery searchTerm="sunsets" photos={photos["sunsets"] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
           {/* Render the Gallery component for search results */}
-          <Route path="/search" element={<Gallery photos={photos[searchTerm] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
+          {/* <Route path="/search" element={<Gallery photos={photos[searchTerm] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} /> */}
           {/* Render the Gallery component for a specific search term */}
           <Route path="/search/:searchTerm" element={<Gallery photos={photos[searchTerm] || []} loading={loading} error={error} onSearchTermChange={setSearchTerm} />} />
           {/* Render the Gallery component for the "cats" search term */}
